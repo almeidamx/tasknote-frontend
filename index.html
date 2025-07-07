@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TaskNote</title>
+  <link rel="stylesheet" href="style.css"/>
+  <!-- Bootstrap 5 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+</head>
+<body>
+  <header>
+    <div class="logo" style="display: flex; align-items: center; gap: 12px;">
+      <span>TaskNote</span>
+    </div>
+  </header>
+  <main>
+    <section class="alerts-section">
+      <h3><i class="bi bi-exclamation-triangle-fill" style="color:#f1a500; margin-right:8px;"></i>Alerta de atividades próximas</h3>
+      <div id="alerts-list"></div>
+    </section>
+    <section class="user-section">
+      <h3><i class="bi bi-people-fill" style="color:#7b3fe4; margin-right:8px;"></i>Cadastrar Usuários Responsáveis</h3>
+      <form id="user-form">
+        <div class="row row-2-cols">
+          <input type="text" id="user-nome" placeholder="Nome do Usuário" required />
+          <input type="email" id="user-email" placeholder="E-mail do Usuário" required />
+        </div>
+        <button type="submit" class="btn-primary btn-cadastrar-usuario">Cadastrar Usuário</button>
+      </form>
+      <div>
+        <h3 id="usuarios-cadastrados-title"><i class="bi bi-person-lines-fill" style="color:#7b3fe4; margin-right:8px;"></i>Usuários cadastrados</h3>
+        <ul id="users-list">
+        </ul>
+      </div>
+    </section>
+    <section class="form-section">
+      <h2><i class="bi bi-journal-plus" style="color:#4b2997; margin-right:8px;"></i>Criar Nova Tarefa</h2>
+      <form id="task-form">
+        <input type="text" id="titulo" placeholder="Título da Tarefa" required />
+        <textarea id="descricao" placeholder="Descrição"></textarea>
+        <div class="row row-3-cols">
+          <label>Prioridade
+            <select id="prioridade">
+              <option value="Baixa">Baixa</option>
+              <option value="Media">Média</option>
+              <option value="Alta">Alta</option>
+              <option value="Urgente">Urgente</option>
+            </select>
+          </label>
+          <label>Data de Vencimento <input type="date" id="data_limite" required /></label>
+          <label>Hora de Vencimento <input type="time" id="horario_limite" required /></label>
+        </div>
+        <div class="row alert-usuario-row" style="display: flex; justify-content: space-between; align-items: flex-end; gap: 2rem;">
+          <div class="alert-row" style="display: flex; align-items: center; gap: 0.7rem;">
+            <label class="alert-minutos-inline" style="margin-bottom: 0;">
+              <span style="color:#f1a500; margin-right:6px;"><i class="bi bi-exclamation-triangle-fill"></i></span>
+              Alertar faltando
+              <input type="number" id="minutos_antes_alerta" min="1" max="1440" value="5" style="max-width: 70px; margin-left: 0.3rem;" />
+              <span>Minutos</span>
+            </label>
+          </div>
+          <div class="usuario-row" style="min-width: 220px;">
+            <label style="display: flex; flex-direction: column;">
+              Usuário Responsável
+              <select id="usuario_id" class="usuario-select" required>
+                <!-- Opções carregadas via JS -->
+              </select>
+            </label>
+          </div>
+        </div>
+        <button type="submit" class="btn-primary btn-salvar-tarefa" id="btn-submit-task">Salvar</button>
+      </form>
+    </section>
+    <section class="tasks-section">
+      <h2><i class="bi bi-list-task" style="color:#4b2997; margin-right:8px;"></i>Suas Atividades</h2>
+      <div class="tasks-container" id="tasks-container"></div>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
