@@ -2,6 +2,13 @@
 
 Interface web para o TaskNote, organizador de tarefas diárias com alerta de prazo.
 
+## Como clonar o repositório
+
+Clone este projeto usando o comando:
+```bash
+git clone https://github.com/almeidamx/tasknote-frontend.git
+```
+
 ## Como rodar
 
 1. Certifique-se de que o backend do TaskNote está rodando em http://localhost:5000.
